@@ -1,0 +1,20 @@
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+    color : #000000;
+}
+
+.black-font{
+	color: black;
+}
+
+.btn-white{
+	background: white;
+	color: black;
+}
+
+.pilihan {
+	box-sizing: border-box;
+	padding: 5px;
+}

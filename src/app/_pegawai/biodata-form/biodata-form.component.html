@@ -1,0 +1,277 @@
+<div class="wrapper">
+
+       
+
+        <div class="main-panel">
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="col-md-12">
+	                    	<div class="col-md-6">
+	                    		<a class="btn btn-danger btn-md align-right" routerLink="../" routerLinkActive="active">kembali</a>
+		                    </div>
+		                    <div class="col-md-12">
+		                    	<h3>{{judul}}</h3>
+		                    </div>
+	                    </div>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="material-icons">dashboard</i>
+                                    <p class="hidden-lg hidden-md">Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="material-icons">notifications</i>
+                                    <span class="notification">5</span>
+                                    <p class="hidden-lg hidden-md">Notifications</p>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Mike John responded to your email</a></li>
+                                    <li><a href="#">You have 5 new tasks</a></li>
+                                    <li><a href="#">You're now friend with Andrew</a></li>
+                                    <li><a href="#">Another Notification</a></li>
+                                    <li><a href="#">Another One</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                   <i class="material-icons">person</i>
+                                   <p class="hidden-lg hidden-md">Profile</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="form-group  is-empty">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="material-input"></span>
+                            </div>
+                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i><div class="ripple-container"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content">
+            
+                <div class="container-fluid">
+                    
+					
+                    <div class="row">
+                        <div class="col-lg-9 col-md-9">
+                            <div class="card box-card">
+                            <div class="col-md-12">
+
+								
+								<div class="form-group col-md-6">
+									<input type="text" class="form-control" [(ngModel)]="nipLama" placeholder="NIP Lama">
+								</div>
+								<div class="form-group col-md-6">
+									<input type="text" class="form-control" [(ngModel)]="nipBaru" placeholder="NIP Baru">
+								</div>
+								<!-- nama -->
+								<div class="form-group col-md-6">
+									<input type="text" class="form-control" [(ngModel)]="namaDepan" placeholder="Nama Depan">
+								</div>
+								<div class="form-group col-md-6">
+									<input type="text" class="form-control" [(ngModel)]="namaBelakang" placeholder="Nama Belakang">
+								</div>
+								<!-- tempat tanggal lahir -->
+								<div class="form-group col-md-6">
+									<input type="text" class="form-control" [(ngModel)]="tempatLahir" placeholder="tempat lahir">
+								</div>
+								<div class="form-group col-md-6">
+									<ng2-datepicker class="form-control col-dm-12" [options]="options" [(ngModel)]="date"></ng2-datepicker>
+	
+								</div>
+
+								<div class="form-group col-md-6">
+									<input type="text" class="form-control" [(ngModel)]="notelp" placeholder="nomor telepon">
+								</div>
+
+								<div class="form-group col-md-6">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-8">{{agama_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="agama_id" disabled="disabled">
+						                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li  *ngFor="let agama of agamalist" (click)="pilihagama(agama._id , agama.keterangan)" role="presentation"><a role="menuitem" tabindex="-1" >{{agama.keterangan}}</a></li>
+						                </ul>
+						            </div>
+					            </div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group col-md-4">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-8">{{prov_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="prov_id" disabled="disabled">
+						                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li  *ngFor="let prov of provlist" (click)="pilihprov(prov._id , prov.keterangan)" role="presentation"><a role="menuitem" tabindex="-1" >{{prov.keterangan}}</a></li>
+						                </ul>
+						            </div>
+					            </div>
+
+					            <div class="form-group col-md-4">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-11">{{kota_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="kota_id" disabled="disabled">
+						                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li  *ngFor="let kota of kotalist" (click)="pilihkota(kota._id , kota.keterangan)" role="presentation"><a role="menuitem" tabindex="-1" >{{kota.keterangan}}</a></li>
+						                </ul>
+						            </div>
+					            </div>
+
+					            <div class="form-group col-md-4">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-11">{{kec_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="kec_id" disabled="disabled">
+						                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li  *ngFor="let kec of keclist" (click)="pilihkec(kec._id , kec.keterangan)" role="presentation"><a role="menuitem" tabindex="-1" >{{kec.keterangan}}</a></li>
+						                </ul>
+						            </div>
+					            </div>
+
+					            <div class="form-group col-md-12">
+					            	<textarea [(ngModel)]="desa_new" class="form-control" cols="30" rows="5" placeholder="alamat desa RT / RW"></textarea>
+								</div>
+							</div>
+
+								<div class="form-group col-md-4">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-11">{{sex_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="sex_id" disabled="disabled">
+						                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li (click)="pilihsex(true)" role="presentation"><a role="menuitem" tabindex="-1" >Laki - laki</a></li>
+						                  <li (click)="pilihsex(false)" role="presentation"><a role="menuitem" tabindex="-1" >Perempuan</a></li>
+						                </ul>
+						            </div>
+					            </div>
+
+					            <div class="form-group col-md-4">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-11">{{kawin_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="kawin_id" disabled="disabled">
+						                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li (click)="pilihkawin(true)" role="presentation"><a role="menuitem" tabindex="-1" >Kawin</a></li>
+						                  <li (click)="pilihkawin(false)" role="presentation"><a role="menuitem" tabindex="-1" >Belum kawin</a></li>
+						                </ul>
+						            </div>
+					            </div>
+
+					            <div class="form-group col-md-4">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-11">{{pns_status_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="pns_status_id" disabled="disabled">
+						                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li (click)="pilih_pns_status(true)" role="presentation"><a role="menuitem" tabindex="-1" >PNS</a></li>
+						                  <li (click)="pilih_pns_status(false)" role="presentation"><a role="menuitem" tabindex="-1" >Belum PNS</a></li>
+						                </ul>
+						            </div>
+					            </div>
+
+					             <div class="form-group col-md-4">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-11">{{jenis_pegawai_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="jenis_pegawai_new" disabled="disabled">
+						                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li (click)="pilihjenis_pegawai('PEGAWAI STRUKTURAL')" role="presentation"><a role="menuitem" tabindex="-1" >PEGAWAI STRUKTURAL</a></li>
+						                  <li (click)="pilihjenis_pegawai('PEGAWAI FUNGSIONAL')" role="presentation"><a role="menuitem" tabindex="-1" >PEGAWAI FUNGSIONAL</a></li>
+						                </ul>
+						            </div>
+					            </div>
+
+					            <div class="form-group col-md-4">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-11">{{instansi_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="instansi_new_id" disabled="disabled">
+						               	<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li  *ngFor="let instansi of instansi_c" (click)="pilihInstansi(instansi._id , instansi.keterangan)" role="presentation"><a role="menuitem" tabindex="-1" >{{instansi.keterangan}}</a></li>
+						                </ul>
+						            </div>
+					            </div>
+
+					            <div class="form-group col-md-4">
+						            <div class="dropdown">
+						              <!-- drop down button -->
+						                <button  class="btn btn-white btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+						                    <span class="col-md-11">{{uker_new}}</span>
+						                    <span class="caret"></span>
+						                </button>
+						                <input type="hidden" [(ngModel)]="uker_new_id" disabled="disabled">
+						               	<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+						                  <li  *ngFor="let uker of uker_c" (click)="pilihuker(uker._id , uker.keterangan)" role="presentation"><a role="menuitem" tabindex="-1" >{{uker.keterangan}}</a></li>
+						                </ul>
+						            </div>
+					            </div>
+
+							  <button *ngIf="judul !== 'tambah baru'" class="btn btn-warning" (click)="updateById(my_nip)">Edit Data</button>
+							  <button *ngIf="judul === 'tambah baru'" type="submit" class="btn btn-primary" (click)="createNew()">Submit</button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card box-card">
+                            <img src="/assets/img/icon/avatar.png" alt="">
+                    			<input class="col-md-12 btn btn-primary" type="file"  (change)="setData($event);" />
+                    		</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+    	$('.datepicker').datepicker();
+    </script>

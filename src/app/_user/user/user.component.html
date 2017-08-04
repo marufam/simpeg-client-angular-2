@@ -1,0 +1,133 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    ...
+  </div>
+</nav>
+
+<div class="container custom-content">
+	  
+	<div class="row">
+        <div class="col-md-6">
+	    <!-- Nav tabs -->
+	    <div class="">
+	    <ul class="nav nav-tabs" role="tablist">
+	        <li role="presentation" class="active ">
+	        	<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+					<i class="material-icons">account_circle</i>
+	        	</a>
+	        </li>
+	        <li role="presentation" class="">
+	        	<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" (click)="getGaji()">
+	        		<i class="material-icons">euro_symbol</i>
+	        	</a>
+	        </li>
+	        <li role="presentation" class="">
+	        	<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" (click)="getPendidikan()">
+	        		<i class="material-icons">school</i>
+	        	</a>
+	        </li>
+	        <li role="presentation" class="">
+	        	<a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" (click)="getPangkat()">
+	        		<i class="material-icons">assignment</i>
+	        	</a>
+	        </li>
+	    </ul>
+
+	    <!-- Tab panes -->
+	    <div class="tab-content">
+	        <div role="tabpanel" class="card tab-pane active" id="home">
+	        	 <table class="table table-hover" *ngFor ="let list of me_c">
+	        	 	<tr>
+	        	 		<td colspan="2">
+	        	 			<img class="img-responsive img-avatar" [src]="patchAvatar" alt="">
+	        	 		</td>
+	        	 	</tr>
+                   <tr >
+                       <td class="col-md-4">NIP Lama</td>
+                       <td>{{list.nip.nipLama}}</td>
+                   </tr>
+                   <tr >
+                       <td class="col-md-4">NIP Baru</td>
+                       <td>{{list.nip.nipBaru}}</td>
+                   </tr>
+                    <tr >
+                       <td class="col-md-4">Nama lengkap</td>
+                       <td>{{list.nama.namaDepan}} {{list.nama.namaDepan}}</td>
+                   </tr>
+                   <tr >
+                       <td class="col-md-4">Agama</td>
+                       <td>{{list.datapersonal.agama.keterangan}}</td>
+                   </tr>
+                   <tr >
+                       <td class="col-md-4">Status Kawin</td>
+                       <td *ngIf="list.datapersonal.statusKawin == true">Sudah Kawin</td>
+                       <td *ngIf="list.datapersonal.statusKawin == false">Belum kawin</td>
+                   </tr>
+                    <tr >
+                       <td class="col-md-4">Jenis kelamin</td>
+                       <td *ngIf="list.datapersonal.jeniskelamin == true">Laki - laki</td>
+                       <td *ngIf="list.datapersonal.jeniskelamin == false">Perempuan</td>
+                   </tr>
+                   <tr >
+                       <td class="col-md-4">Nomor Telp</td>
+                       <td>{{list.datapersonal.noTelp}}</td>
+                   </tr>
+
+                   <tr >
+                       <td class="col-md-4">Alamat</td>
+                       <td>{{list.datapersonal.alamat.desa}}  {{list.datapersonal.alamat.kecamatan.keterangan}}, {{list.datapersonal.alamat.kabupaten.keterangan}} ,{{list.datapersonal.alamat.provinsi.keterangan}}</td>
+                   </tr>
+
+                </table>
+	        </div>
+	        <div role="tabpanel" class="tab-pane" id="profile" >
+	        	<div class="card-content table-responsive" *ngIf = "status_gaji == true">
+                    <table class="table table-hover">
+                        <thead class="text-default">
+                            <th>no</th>
+                            <th>NIP</th>
+                            <th>Nomor SK</th>
+                            <th>Tanggal SK</th>
+                            <th>Golongan</th>
+                            <th>Masa Kerja</th>
+                            <th>Tmt SK</th>
+                            <th>Gaji</th>
+                            <th>Option</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of gaji_c ; let i = index">
+                                <td> {{i + 1 }} </td>
+                                <td>{{item.nip}}</td>
+                                <td>{{item.NomorSK}}</td>
+                                <td>{{item.tglSK}}</td>
+                                <td>{{item.tmtSK}}</td>
+                                <td>{{item.gaji}}</td>
+                                <td>
+                                    <button (click)="getByOne(item._id)" data-toggle="modal" data-target="#editModal" type="button" reel="tooltip" title="Edit Task"  class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                    <button (click)="hapus(item._id)" data-toggle="modal" data-target="#myModal" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>	
+                <div class="card-content" *ngIf = "status_gaji == false">
+                	<h1>no data gaji berkala</h1>
+                </div>
+
+			</div>
+	        <div role="tabpanel" class="tab-pane" id="messages">
+	        	
+	        </div>
+
+	        <div role="tabpanel" class="tab-pane" id="settings">
+	        	
+	        </div>
+	    </div>
+		</div>
+        </div>
+	</div>
+</div>

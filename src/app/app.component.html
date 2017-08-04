@@ -1,3 +1,29 @@
-<h1>
-  {{title}}
-</h1>
+    <div  class="collapse navbar-collapse sidebar" data-color="purple" data-image="https://images.freecreatives.com/wp-content/uploads/2016/01/Blue-Cubes-For-iPhone-Background.jpg" *ngIf= "my_menu == true && menu_user == false">
+            <!--
+                Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+                Tip 2: you can also add an image using data-image tag
+            -->
+
+            <div class="logo">
+                <a routerLink="/" class="simple-text">
+                    simpeg
+                </a>
+            </div>
+
+            <div class="sidebar-wrapper">
+               <ul class="nav">
+                    <li *ngFor = "let menu of menu_collection">
+                         <a routerLink="../../../{{menu.grup}}/{{menu.menu}}">
+                            <i class="material-icons">dashboard</i>
+                            <p>{{menu.menu}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="my-content">
+<router-outlet></router-outlet>
+            
+        </div>

@@ -1,0 +1,23 @@
+.avatar{
+	float: left;
+	display: inline-block;
+	width: 40%;
+	margin: 0 30%;
+}
+
+.my-table{
+	float: left;
+	display: inline-block;
+	width: 60%;
+	margin: 15px 20%;	
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.panel-body h2{
+	text-align: center;
+}

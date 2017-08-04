@@ -1,0 +1,236 @@
+<div class="wrapper">
+
+        <div class="main-panel">
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Material Dashboard</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="material-icons">dashboard</i>
+                                    <p class="hidden-lg hidden-md">Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="material-icons">notifications</i>
+                                    <span class="notification">5</span>
+                                    <p class="hidden-lg hidden-md">Notifications</p>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Mike John responded to your email</a></li>
+                                    <li><a href="#">You have 5 new tasks</a></li>
+                                    <li><a href="#">You're now friend with Andrew</a></li>
+                                    <li><a href="#">Another Notification</a></li>
+                                    <li><a href="#">Another One</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                                   <i class="material-icons">person</i>
+                                   <p class="hidden-lg hidden-md">Profile</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <form class="navbar-form navbar-right" role="search">
+                            <div class="form-group  is-empty">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="material-input"></span>
+                            </div>
+                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i><div class="ripple-container"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="content">
+            
+                <div class="container-fluid">
+
+                    <div class="row">
+
+
+                   
+          
+
+                        <div class="col-lg-6 col-md-12">
+                            <div class="card">
+                                <div class="card-header" data-background-color="purple">
+                                    <h4 class="title">Data Master Alamat kota</h4>
+                                    <p class="category">kecamatan</p>
+
+                                    <div class="dropdown col-md-8">
+                                      <!-- drop down button -->
+                                        <button  class="btn btn-warning btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                                            <span class="col-md-8">{{pilihprovinsi}}</span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <input type="hidden" [(ngModel)]="pilihprovinsi" disabled="disabled">
+                                        <ul class="dropdown-menu scrollable-menu black-font" role="menu" aria-labelledby="menu1">
+                                        <!-- dropdown search -->
+                                          <!-- <input type="text" class="form-control" placeholder="search"> -->
+                                        <!-- dropdown list -->
+                                          <li  *ngFor="let provinsi of provinsiList" (click)="getAll(provinsi._id, provinsi.keterangan)" role="presentation"><a role="menuitem" tabindex="-1" >{{provinsi.keterangan}}</a></li>
+                                        </ul>
+                                    </div>
+                                    
+
+                                    <button class="btn btn-default btn-md align-right" data-toggle="modal" data-target="#createnewModal">tambah baru</button>
+                                </div>
+                                <div class="card-content table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="text-default">
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>option</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of listItem ; let i = index">
+                                                <td> {{i + 1 }} </td>
+                                                <td>{{item.keterangan}}</td>
+                                                <td>
+                                                    <button (click)="getByOne(item._id)" data-toggle="modal" data-target="#editModal" type="button" reel="tooltip" title="Edit Task"  class="btn btn-primary btn-simple btn-xs">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                    <button (click)="hapus(item._id)" data-toggle="modal" data-target="#myModal" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                        <i class="material-icons">close</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <ul class="pagination">
+                                      <li><a href="#">1</a></li>
+                                      <li><a href="#">2</a></li>
+                                      <li><a href="#">3</a></li>
+                                      <li><a href="#">4</a></li>
+                                      <li><a href="#">5</a></li>
+                                    </ul>
+
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Hapus Data</h4>
+        </div>
+        <div class="modal-body">
+          <p>apakah anda yakin menghapus data ini </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deteleById(idHapus)" >Hapus</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="createnewModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Tambah Data Baru</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+              <div class="dropdown">
+              <!-- drop down button -->
+                <button  class="btn btn-primary btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                    <span class="col-md-8">{{provinsiNew}}</span>
+                    <span class="caret"></span>
+                </button>
+                <input type="hidden" [(ngModel)]="provinsiNew" disabled="disabled">
+                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+                <!-- dropdown search -->
+                  <!-- <input type="text" class="form-control" placeholder="search"> -->
+                <!-- dropdown list -->
+                  <li  *ngFor="let provinsi of provinsiList" (click)="pilihProvinsi(provinsi._id , provinsi.keterangan)" role="presentation"><a role="menuitem" tabindex="-1" >{{provinsi.keterangan}}</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="form-group  is-empty">
+                <input type="text" class="form-control" name="newItem" [(ngModel)]="newItem">
+                <span class="material-input"></span>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createNew()" >tambah baru</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+      <div class="modal-content" *ngFor ="let list of listOne">
+        <div class="modal-header" data-background-color="orange">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Data</h4>
+        </div>
+        <div class="modal-body" >
+          <p>apakah anda yakin menngubah data ini </p>
+            
+            <div class="form-group">
+              <div class="dropdown">
+              <!-- drop down button -->
+                <button  class="btn btn-primary btn-block dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                    <span class="col-md-8">{{provinsiEdit}}</span>
+                    <span class="caret"></span>
+                </button>
+                <input type="hidden" [(ngModel)]="provinsiEdit" disabled="disabled">
+                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
+                <!-- dropdown search -->
+                  <!-- <input type="text" class="form-control" placeholder="search"> -->
+                <!-- dropdown list -->
+                  <li  *ngFor="let provinsi of provinsiList" (click)="pilihProvinsi(provinsi._id, provinsi.keterangan)" role="presentation"><a role="menuitem" tabindex="-1" >{{provinsi.keterangan}}</a></li>
+                </ul>
+              </div>
+            </div>
+            
+             <div class="form-group  is-empty">
+                <input type="text" class="form-control" name="editItem" [(ngModel)]="editItem">
+                <span class="material-input"></span>
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="updateById(list._id)" >Ubah data</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        
