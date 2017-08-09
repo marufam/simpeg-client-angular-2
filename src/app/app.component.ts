@@ -69,6 +69,10 @@ export class AppComponent {
 	    )
 	}
 
+	showme(){
+		alert("dadadadadada")
+	}
+
 }
 
 

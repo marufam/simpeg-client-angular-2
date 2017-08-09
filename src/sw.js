@@ -43,54 +43,54 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// self.addEventListener('fetch', (e) => {
-//   log('Service Worker: Fetch URL ', e.request.url);
-  
-//   e.waitUntil(
-//     caches.keys().then((keyList) => {
-//       return Promise.all(keyList.map((key) => {
-
-//         if (key !== cacheName) {
-//           log('Service Worker: Removing old cache', key);
-//           return caches.delete(key);
-
-
-//           e.respondWith(
-//             caches.match(e.request.clone()).then((response) => {
-//               return response || fetch(e.request.clone()).then((r2) => {
-//                   return caches.open(dataCacheName).then((cache) => {
-//                     console.log('Service Worker: Fetched & Cached URL ', e.request.url);
-//                     cache.put(e.request.url, r2.clone());
-//                     return r2.clone();
-//                   });
-//                 });
-//             })
-//           );
-          
-//         }
-
-//       }));
-//     })
-//   );
-
-//   // Match requests for data and handle them separately
-  
-
-// });
-
 self.addEventListener('fetch', (e) => {
   log('Service Worker: Fetch URL ', e.request.url);
+  
+  e.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
 
-  // Match requests for data and handle them separately
-  e.respondWith(
-    caches.match(e.request.clone()).then((response) => {
-      return response || fetch(e.request.clone()).then((r2) => {
-          return caches.open(dataCacheName).then((cache) => {
-            console.log('Service Worker: Fetched & Cached URL ', e.request.url);
-            cache.put(e.request.url, r2.clone());
-            return r2.clone();
-          });
-        });
+        if (key !== cacheName) {
+          log('Service Worker: Removing old cache', key);
+          return caches.delete(key);
+
+
+          e.respondWith(
+            caches.match(e.request.clone()).then((response) => {
+              return response || fetch(e.request.clone()).then((r2) => {
+                  return caches.open(dataCacheName).then((cache) => {
+                    console.log('Service Worker: Fetched & Cached URL ', e.request.url);
+                    cache.put(e.request.url, r2.clone());
+                    return r2.clone();
+                  });
+                });
+            })
+          );
+          
+        }
+
+      }));
     })
   );
+
+  // Match requests for data and handle them separately
+  
+
 });
+
+// self.addEventListener('fetch', (e) => {
+//   log('Service Worker: Fetch URL ', e.request.url);
+
+//   // Match requests for data and handle them separately
+//   e.respondWith(
+//     caches.match(e.request.clone()).then((response) => {
+//       return response || fetch(e.request.clone()).then((r2) => {
+//           return caches.open(dataCacheName).then((cache) => {
+//             console.log('Service Worker: Fetched & Cached URL ', e.request.url);
+//             cache.put(e.request.url, r2.clone());
+//             return r2.clone();
+//           });
+//         });
+//     })
+//   );
+// });

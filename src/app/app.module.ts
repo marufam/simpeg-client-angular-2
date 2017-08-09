@@ -59,6 +59,8 @@ import { UkerComponent } from './_master/uker/uker.component';
 import { UkerInstansiComponent } from './_master/uker-instansi/uker-instansi.component';
 import { UserComponent } from './_user/user/user.component';
 
+import {PopupModule} from 'ng2-opd-popup';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +91,8 @@ import { UserComponent } from './_user/user/user.component';
     FormsModule,
     HttpModule,
     routing,
-    DatePickerModule
+    DatePickerModule,
+    PopupModule.forRoot()
   ],
   providers: [
     MainServiceService,
