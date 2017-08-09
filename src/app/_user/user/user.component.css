@@ -19,3 +19,7 @@ body{ background: #EDECEC; padding:0; margin: 0}
 	width: 60%;
 	margin: 0 20%;
 }
+
+ul li a i{
+	text-align: center;
+}

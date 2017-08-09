@@ -37,26 +37,6 @@ export class AgamaComponent implements OnInit {
   	this.getAll()
     // this.getByOne()
     console.log("loaded")
-    this.whois()
-  }
-
-    whois(){
-      this.main_s.whois()
-      .subscribe(
-        (data) => {
-           this.mymenu(data)
-        }
-      )
-  }
-
-  mymenu(param){
-    this.main_s.getmymenu(param)
-      .subscribe(
-        (data) => {
-           console.log(data.data)
-           this.ismenu = data.data
-        }
-      )
   }
 
   cekIdUri(){
